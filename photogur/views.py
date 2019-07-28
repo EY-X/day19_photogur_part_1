@@ -7,7 +7,8 @@ def pictures_view(request):
 
 
     context = { 
-        'pictures': Picture.objects.all()
+        'pictures': Picture.objects.all(),
+        'comments': Comment.objects.all(),
     }
 
 

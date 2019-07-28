@@ -8,10 +8,18 @@
 </head>
 <body>
     <h1>Pictures</h1>
-   {% for pic in pictures %}
-    <h2>{{pic.title}}</h2>
-    <img src="{{pic.url}}" > 
+    {% for pic in pictures %}
+        <h2>{{pic.title}} By: {{ pic.artist}}</h2>
+        <img src="{{pic.url}}" alt = "{{pic.title}}" > 
+
+        {% for c in comments %}
+        {% if pic.id == c.id %}
+            <p>Comments: {{pic.comments.count}}</p>
+
+        {% endif  %}
+        {% endfor  %}
+    
     {% endfor %}
-   
+    
 </body>
 </html>
