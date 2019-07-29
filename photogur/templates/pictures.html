@@ -8,15 +8,20 @@
 </head>
 <body>
     <h1>Pictures</h1>
-    {% for pic in pictures %}
-        <h2>{{pic.title}} By: {{ pic.artist}}</h2>
-        <img src="{{pic.url}}" alt = "{{pic.title}}" > 
-
-        {% for comment in comments %}
+        <ul>
+            {% for pic in pictures %}
+                <h2>{{pic.title}} By: {{ pic.artist}}</h2>
+                <a href="{% url 'picture_details' id=pic.pk %}">
+                    <li>
+                        <img src="{{pic.url}}" alt = "{{pic.title}}">
+                    </li> 
+                </a>
+            {% for comment in comments %}
         
             <p>Comments: {{pic.comments.count}}</p>
 
         {% endfor  %}
+        <ul>
     
     {% endfor %}
     
