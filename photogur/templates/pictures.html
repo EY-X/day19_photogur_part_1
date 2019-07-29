@@ -12,11 +12,10 @@
         <h2>{{pic.title}} By: {{ pic.artist}}</h2>
         <img src="{{pic.url}}" alt = "{{pic.title}}" > 
 
-        {% for c in comments %}
-        {% if pic.id == c.id %}
+        {% for comment in comments %}
+        
             <p>Comments: {{pic.comments.count}}</p>
 
-        {% endif  %}
         {% endfor  %}
     
     {% endfor %}

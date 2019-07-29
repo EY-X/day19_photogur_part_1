@@ -20,4 +20,5 @@ from photogur import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pictures/', views.pictures_view),
+    path('pictures/<int:id>', views.picture_show),
 ]
