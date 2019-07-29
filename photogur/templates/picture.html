@@ -1,12 +1,17 @@
-<h1>{{picture.title}}</h1>
-<h2>By {{picture.artist}}</h2>
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>{{picture.title}}</h1>
+    <h2>By {{picture.artist}}</h2>
 
 
-<img src="{{picture.url}}" alt="{{picture.title}}" />
-<a href="{% url 'picture_details' id=picture.pk %}"></a>
-<ul>
-    <li>
-    {{picture.comments}}
-    </li>
-</ul>
+    <img src="{{picture.url}}" alt="{{picture.title}}" />
+    <a href="{% url 'picture_details' id=picture.pk %}"></a>
+    <ul>
+        <li>
+        {{picture.comments}}
+        </li>
+    </ul>
+
+{% endblock %}
 
