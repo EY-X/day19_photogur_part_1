@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Pictures</h1>
+    <h2>Pictures</h2>
         <ul>
             {% for pic in pictures %}
-                <h2>{{pic.title}} By: {{ pic.artist}}</h2>
+                <h3>{{pic.title}} By: {{ pic.artist}}</h3>
                 <a href="{% url 'picture_details' id=pic.pk %}">
                     <li>
                         <img src="{{pic.url}}" alt = "{{pic.title}}">
