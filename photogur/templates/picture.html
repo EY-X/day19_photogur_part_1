@@ -8,10 +8,29 @@
     <img src="{{picture.url}}" alt="{{picture.title}}" />
     <a href="{% url 'picture_details' id=picture.pk %}"></a>
     <ul>
-        <li>
-        {{picture.comments}}
-        </li>
+        {% for comment in picture.comments.all %}
+            <li>
+                {{comment.name}}
+                {{comment.message}}
+                {{comment.created_at}}
+            </li>
+        {% endfor %}
     </ul>
+    <form action="{% url 'create_comment' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="picture" value="{{ picture.pk }}"/>
+        <div>
+            <label for="name_comment_id">Enter Name</label>
+            <input type="text" name="name_comment_name" id="name_comment_id"/>
+        </div>
+        <div>
+            <label for="message_comment_id">Enter Message</label>
+            <input type="text" name="message_comment_name" id="message_comment_id"/>
+        </div>
+        <div>
+            <input type="submit" value="submit"/>
+        </div>
+    </form>
 
 {% endblock %}
 

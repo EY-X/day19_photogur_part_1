@@ -8,11 +8,9 @@
                 <a href="{% url 'picture_details' id=pic.pk %}">
                         <img src="{{pic.url}}" alt = "{{pic.title}}">
                 </a>
-                {% for comment in comments %}
+                
         
                     <p>Comments: {{pic.comments.count}}</p>
-
-                {% endfor  %}
                 </li>
             {% endfor %}
         </ul>
