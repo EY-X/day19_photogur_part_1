@@ -13,6 +13,13 @@
 <body>
         <header>
             <h1>Photogur</h1>
+            <form action="{% url 'picture_search' %}" method="GET">
+                <label for='picture_search'>
+                    <span>Search</span>
+                    <input type="search" id="picture_search" name="query" value="{{ query }}"/>
+                    <input type="submit" value="Search" />
+                </label>
+            </form>
         </header>
         {% block content %}
         {% endblock %}

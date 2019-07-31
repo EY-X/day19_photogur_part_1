@@ -5,9 +5,60 @@ html {
 }
 
 body {
-    background-color: rgb(199, 181, 208);
-
+    background-color: rgb(208, 189, 218);
 }
 header {
     text-align: center;
+}
+
+ul {
+ 
+
+}
+
+footer {
+    text-align: center;
+    margin: 0 auto;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* tablet */ 
+@media (max-width: 992px) { 
+    ul { 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        width: 100%; 
+    }
+    h1 { 
+        font-size: 2em; 
+    }
+} 
+
+/* mobile */ 
+@media (max-width: 768px) { 
+    ul { 
+        display: grid; 
+        grid-template-columns: 1fr; 
+        width: 100%; 
+    }
+    h1 { 
+        font-size: 3em; 
+    }
+    h2 { 
+        font-size: 2em;
+        margin-left: 14px; 
+    }
+
+
 }

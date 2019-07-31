@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for pic in pictures %}
+    <p> {{pic.title}} </p>
+    <p>By: {{pic.artist}}</p>
+    <img src = "{{pic.url}}" alt="{{pic.title}}">
+{% endfor %}
+
+{% endblock %}
