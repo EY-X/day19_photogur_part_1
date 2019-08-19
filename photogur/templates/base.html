@@ -20,6 +20,14 @@
                     <input type="submit" value="Search" />
                 </label>
             </form>
+            {% if request.user.is_authenticated %}
+                <h4>Hello, {{request.user.username}} :) </h4>
+                <h4><a href="{% url 'logout'   %}">Logout</a></h4>
+
+            {% else %}
+                <h4><a href="{% url 'login'   %}">Login</a></h4>
+            {% endif %}
+
         </header>
         {% block content %}
         {% endblock %}
