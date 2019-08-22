@@ -91,6 +91,8 @@ def create_comment(request):
     
     return render(request,'picture.html', context)
 
+
+@login_required
 def picture_new(request):
     return render(request, 'picture-form.html',{
         'form': PictureForm(),
