@@ -104,7 +104,8 @@ def picture_create(request):
     form = PictureForm(request.POST)
     if form.is_valid():
         new_pic = form.save(commit=False)
-        new_pic.user = requested.user
+        new_pic.user = request.user
+
         new_pic.save()
     return HttpResponseRedirect('/pictures')
 
