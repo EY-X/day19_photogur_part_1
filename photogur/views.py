@@ -4,7 +4,7 @@ from photogur.models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
-from photogur.forms import LoginForm
+from photogur.forms import LoginForm, PictureForm
 
 from photogur.forms import LoginForm
 
@@ -90,5 +90,22 @@ def create_comment(request):
     context = {'picture': picture_id}
     
     return render(request,'picture.html', context)
+
+def picture_new(request):
+    return render(request, 'picture-form.html',{
+        'form': PictureForm(),
+        'message': 'Post a picture!!',
+        'action': '/pictures/create'
+    })
+
+
+@login_required
+def picture_create(request):
+    form = PictureForm(request.POST)
+    if form.is_valid():
+        new_pic = form.save(commit=False)
+        new_pic.user = requested.user
+        new_pic.save()
+    return HttpResponseRedirect('/pictures')
 
 

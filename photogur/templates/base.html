@@ -20,6 +20,7 @@
                     <input type="submit" value="Search" />
                 </label>
             </form>
+            <a href="{% url 'picture_new'   %}">Post a PHOTO!</a>
             {% if request.user.is_authenticated %}
                 <h4>Hello, {{request.user.username}} :) </h4>
                 <h4><a href="{% url 'logout'   %}">Logout</a></h4>
