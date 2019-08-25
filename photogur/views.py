@@ -1,12 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from photogur.models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from photogur.forms import LoginForm, PictureForm
-
-from photogur.forms import LoginForm
 
 def login_view(request):
     if request.method == 'POST':
@@ -48,9 +46,6 @@ def signup(request):
     return HttpResponse(html_response)
 
 
-@login_required
-def function_name(request):
-    pass
 
 
 def root(request):
@@ -111,4 +106,24 @@ def picture_create(request):
         new_pic.save()
     return HttpResponseRedirect('/pictures')
 
+@login_required
+def edit_picture(request, id):
+    picture = get_object_or_404(Picture, pk=id, user=request.user.pk)
+    if request.method == 'POST':
+        form = PictureForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            artist = form.cleaned_data.get('artist')
+            url = form.cleaned_data.get('url')
+            picture.title = title
+            picture.artist = artist
+            picture.url = url
+            picture.save()
+            return HttpResponseRedirect('/pictures')
+    form = PictureForm(request.POST)
+    context = {'picture': picture, 'form': form}
+    return HttpResponse(render(request, 'edit.html', context))
 
+
+picture = get_object_or_404(Picture, pk=<PICTURE ID GOES HERE>, user=request.user.pk)
+# code to render edit template as usual
